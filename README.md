@@ -25,16 +25,22 @@ To get started with this project, follow the steps below:
 git clone git@github.com:cesarapires/kafka-ticket-sales.git
 ```
 
-2. Build the Docker image:
+2. Navigate to the project directory:
+```bash
+cd kafka-ticket-sales
+```
+
+3. Build the Docker image:
 ```bash
 docker build -t kafka-ticket-sales .
 ```
-3. Run the Docker container:
+
+4. Run the Docker container:
 ```bash
 docker compose up -d
 ```
 
-4. Access the application:
+5. Access the application:
 
 Open your web browser and visit http://localhost:8080 to access the running application.
 
