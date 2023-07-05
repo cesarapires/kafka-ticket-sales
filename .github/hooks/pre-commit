@@ -5,17 +5,24 @@ is_container_running() {
   docker ps -q -f name=kafka-ticket-sales
 }
 
+# Função para verificar se uma imagem Docker existe
+has_image() {
+  docker image inspect kafka-ticket-sales > /dev/null 2>&1
+}
+
+if ! image_exists; then
+  echo "The image was not found"
+  docker build -t kafka-ticket-sales .
+fi
+
 # Verifica se o contêiner de teste já está em execução
-if is_container_running; then
-  echo "O contêiner de teste já está em execução. Abortando o commit."
+if [ -n "$(is_container_running)" ]; then
+  echo "The test container is already running. Aborting the commit."
   exit 1
 fi
 
-# Inicia o contêiner Docker em segundo plano para executar os testes
-docker run --rm --name kafka-ticket-sales -d kafka-ticket-sales
-
 # Executa os testes unitários no contêiner
-docker exec -it kafka-ticket-sales ./mvnw test
+docker run --rm --name springboot-test kafka-ticket-sales ./mvnw test
 
 # Captura o código de saída do comando de teste
 TEST_RESULT=$?
