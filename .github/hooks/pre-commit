@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Função para verificar se um contêiner Docker está em execução
+is_container_running() {
+  docker ps -q -f name=kafka-ticket-sales
+}
+
+# Verifica se o contêiner de teste já está em execução
+if is_container_running; then
+  echo "O contêiner de teste já está em execução. Abortando o commit."
+  exit 1
+fi
+
+# Inicia o contêiner Docker em segundo plano para executar os testes
+docker run --rm --name kafka-ticket-sales -d kafka-ticket-sales
+
+# Executa os testes unitários no contêiner
+docker exec -it kafka-ticket-sales ./mvnw test
+
+# Captura o código de saída do comando de teste
+TEST_RESULT=$?
+
+# Finaliza e remove o contêiner de teste
+docker stop kafka-ticket-sales > /dev/null
+docker rm kafka-ticket-sales > /dev/null
+
+# Verifica se os testes falharam e aborta o commit, se necessário
+if [ $TEST_RESULT -ne 0 ]; then
+  echo "Unit tests failed. Aborting the commit."
+  exit 1
+fi
+
+# Se os testes passarem, permite o commit
+exit 0
