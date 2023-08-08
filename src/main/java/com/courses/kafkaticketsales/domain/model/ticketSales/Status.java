@@ -1,4 +1,4 @@
-package com.courses.kafkaticketsales.domain.dtos.ticketSalesDTO;
+package com.courses.kafkaticketsales.domain.model.ticketSales;
 
 public enum Status {
     SOLD("Sold"),

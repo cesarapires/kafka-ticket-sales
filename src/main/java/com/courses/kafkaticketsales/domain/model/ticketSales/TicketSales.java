@@ -1,15 +1,15 @@
-package com.courses.kafkaticketsales.domain.dtos.ticketSalesDTO;
+package com.courses.kafkaticketsales.domain.model.ticketSales;
 
 import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TicketSalesDTO {
+public class TicketSales {
     private UUID id;
 
     private Type type;
@@ -27,5 +27,4 @@ public class TicketSalesDTO {
     private float totalPrice;
 
     private UUID buyerId;
-
 }
