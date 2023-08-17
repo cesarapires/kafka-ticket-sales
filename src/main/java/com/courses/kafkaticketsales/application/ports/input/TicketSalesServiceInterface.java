@@ -6,9 +6,9 @@ import java.util.UUID;
 import java.util.List;
 
 
-public interface TicketSalesInterface {
+public interface TicketSalesServiceInterface {
 
-    void addTicketSales(TicketSales ticketSales);
+    TicketSales addTicketSales(TicketSales ticketSales);
 
     TicketSales getTicketSaleById(UUID uuid);
 
