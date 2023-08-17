@@ -10,15 +10,17 @@ has_image() {
   docker image inspect kafka-ticket-sales > /dev/null 2>&1
 }
 
-if ! image_exists; then
+if ! has_image; then
   echo "The image was not found"
   docker build -t kafka-ticket-sales .
 fi
 
 # Verifica se o contêiner de teste já está em execução
 if [ -n "$(is_container_running)" ]; then
-  echo "The test container is already running. Aborting the commit."
-  exit 1
+  echo "The test container is already running."
+else
+  echo "Starting the test container..."
+  docker compose up -d
 fi
 
 # Executa os testes unitários no contêiner
@@ -26,10 +28,6 @@ docker run --rm --name springboot-test kafka-ticket-sales ./mvnw test
 
 # Captura o código de saída do comando de teste
 TEST_RESULT=$?
-
-# Finaliza e remove o contêiner de teste
-docker stop kafka-ticket-sales > /dev/null
-docker rm kafka-ticket-sales > /dev/null
 
 # Verifica se os testes falharam e aborta o commit, se necessário
 if [ $TEST_RESULT -ne 0 ]; then
