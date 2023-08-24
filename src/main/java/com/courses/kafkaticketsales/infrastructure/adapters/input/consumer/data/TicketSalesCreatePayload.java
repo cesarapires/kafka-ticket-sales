@@ -1,39 +1,37 @@
-package com.courses.kafkaticketsales.infrastructure.adapters.output.persistence.entity;
+package com.courses.kafkaticketsales.infrastructure.adapters.input.consumer.data;
 
 import com.courses.kafkaticketsales.domain.model.ticketSales.Status;
 import com.courses.kafkaticketsales.domain.model.ticketSales.Type;
-import jakarta.persistence.*;
+import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 import java.util.UUID;
 
-@Entity
-@Data
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class TicketSalesEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class TicketSalesCreatePayload {
     private UUID id;
 
-    @Enumerated(EnumType.STRING)
     private Type type;
 
-    @Enumerated(EnumType.STRING)
     private Status status;
 
+    @SerializedName("event_id")
     private UUID eventId;
 
+    @SerializedName("seat_id")
     private UUID seatId;
 
     private float price;
 
     private float discount;
 
+    @SerializedName("total_price")
     private float totalPrice;
 
+    @SerializedName("buyer_id")
     private UUID buyerId;
 }

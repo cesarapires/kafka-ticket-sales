@@ -1,4 +1,4 @@
-package com.courses.kafkaticketsales.domain.event;
+package com.courses.kafkaticketsales.infrastructure.adapters.input.consumer.event;
 
 import com.courses.kafkaticketsales.application.event.TicketSalesEvent;
 import lombok.*;
@@ -9,16 +9,18 @@ import java.util.UUID;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class TicketSalesCreatedEvent implements TicketSalesEvent {
-
+public class TicketSalesWasReceived implements TicketSalesEvent {
     private UUID id;
 
     private LocalDateTime dateTime;
 
-    public TicketSalesCreatedEvent(UUID id) {
+    public TicketSalesWasReceived(UUID id) {
         this.id = id;
+        this.dateTime = LocalDateTime.now();
+    }
+
+    public TicketSalesWasReceived() {
         this.dateTime = LocalDateTime.now();
     }
 }

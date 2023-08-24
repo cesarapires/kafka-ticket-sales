@@ -1,7 +1,7 @@
 package com.courses.kafkaticketsales.infrastructure.adapters.output.eventPublisher;
 
+import com.courses.kafkaticketsales.application.event.TicketSalesEvent;
 import com.courses.kafkaticketsales.application.ports.output.TicketSalesEventPublisher;
-import com.courses.kafkaticketsales.domain.event.TicketSalesCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -11,7 +11,7 @@ public class TicketSalesEventPublisherAdapter implements TicketSalesEventPublish
     private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
-    public void publishTicketSalesCreatedEvent(TicketSalesCreatedEvent event) {
+    public void publishTicketSalesCreatedEvent(TicketSalesEvent event) {
         applicationEventPublisher.publishEvent(event);
     }
 }

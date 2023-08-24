@@ -1,9 +1,9 @@
 package com.courses.kafkaticketsales.application.ports.output;
 
-import com.courses.kafkaticketsales.domain.event.TicketSalesCreatedEvent;
+import com.courses.kafkaticketsales.application.event.TicketSalesEvent;
 
 public interface TicketSalesEventPublisher {
 
-    void publishTicketSalesCreatedEvent(TicketSalesCreatedEvent event);
+    void publishTicketSalesCreatedEvent(TicketSalesEvent event);
 
 }
