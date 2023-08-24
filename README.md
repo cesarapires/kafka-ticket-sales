@@ -40,9 +40,14 @@ docker build -t kafka-ticket-sales .
 docker compose up -d
 ```
 
-5. Access the application:
+## To run simulator
 
-Open your web browser and visit http://localhost:8080 to access the running application.
+To generate data to move the topic, an application was created in go to simulate the sending of data by a producer within the topic that way, if necessary, you can run the simulator container and the data will be sent randomly, follow the command below to run the simulator
+
+4. Run the simulator:
+```bash
+docker compose exec simulator go run main.go
+```
 
  ## License
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
