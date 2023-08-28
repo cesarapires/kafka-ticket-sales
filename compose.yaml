@@ -2,8 +2,8 @@ version: '3'
 services:
   app:
     build:
-      context: ./ticket-sales-consumer/docker
-      dockerfile: Dockerfile
+      context: ./ticket-sales
+      dockerfile: ./docker/Dockerfile
     ports:
       - "8080:8080"
     volumes:

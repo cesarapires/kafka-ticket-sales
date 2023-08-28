@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -t kafka-ticket-sales .
-    - name: Start Docker Compose and Run Unit Test
-      run: docker run --rm --name springboot-test kafka-ticket-sales ./mvnw test
+      run: docker compose up -d
+    - name: Run Unit Test
+      run: docker compose exec -it -T app ./mvnw test
