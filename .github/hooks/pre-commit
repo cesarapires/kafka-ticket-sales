@@ -5,24 +5,12 @@ is_container_running() {
   docker ps -q -f name=kafka-ticket-sales-app
 }
 
-# Função para verificar se uma imagem Docker existe
-has_image() {
-  docker image inspect kafka-ticket-sales > /dev/null 2>&1
-}
-
-if ! has_image; then
-  echo "Creating new image..."
-  docker build -t kafka-ticket-sales .
-else
-  echo "The image was found"
-fi
-
 # Verifica se o contêiner de teste já está em execução
 if [ -n "$(is_container_running)" ]; then
   echo "The test container is already running."
 else
   echo "Starting the test container..."
-  docker compose up -d
+  docker compose up -d app
 fi
 
 # Executa os testes unitários no contêiner

@@ -4,6 +4,10 @@ services:
     build:
       context: ./ticket-sales
       dockerfile: ./docker/Dockerfile
+    depends_on:
+      - db
+      - kafka
+      - zookeeper
     ports:
       - "8080:8080"
     volumes:
@@ -47,6 +51,7 @@ services:
     build:
       context: ./simulator/docker/
       dockerfile: Dockerfile
+    command: go run main.go
     volumes:
       - .:/go/src/
 
