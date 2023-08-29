@@ -30,14 +30,9 @@ git clone git@github.com:cesarapires/kafka-ticket-sales.git
 cd kafka-ticket-sales
 ```
 
-3. Build the Docker image:
+3. Run the Docker container:
 ```bash
-docker build -t kafka-ticket-sales .
-```
-
-4. Run the Docker container:
-```bash
-docker compose up -d
+docker compose up -d app
 ```
 
 ## To run simulator
@@ -46,7 +41,7 @@ To generate data to move the topic, an application was created in go to simulate
 
 4. Run the simulator:
 ```bash
-docker compose exec simulator go run main.go
+docker compose up -d simulator
 ```
 
  ## License
