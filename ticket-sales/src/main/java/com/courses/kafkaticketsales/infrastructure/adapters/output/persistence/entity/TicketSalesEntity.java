@@ -8,12 +8,10 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class TicketSalesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
