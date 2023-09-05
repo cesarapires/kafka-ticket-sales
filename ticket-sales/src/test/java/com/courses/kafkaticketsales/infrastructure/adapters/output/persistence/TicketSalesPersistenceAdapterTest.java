@@ -12,6 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.UUID;
 
 import static org.mockito.Mockito.*;
@@ -47,6 +50,27 @@ class TicketSalesPersistenceAdapterTest {
 
         verify(ticketSalesPersistenceMapper, times(1)).toTicketSalesEntity(ticketSales);
         verify(ticketSalesRepository, times(1)).save(ticketSalesEntity);
+    }
+
+    @Test
+    public void testShouldGetTicketSalesById() {
+        Optional<TicketSales> result = ticketSalesPersistenceAdapter.getTicketSaleById(UUID.randomUUID());
+
+        assertEquals(Optional.empty(), result);
+    }
+
+    @Test
+    public void testShouldGetTicketSalesByUserId() {
+        List<TicketSales> result = ticketSalesPersistenceAdapter.getTicketSaleByUser(UUID.randomUUID());
+
+        assertNull(result);
+    }
+
+    @Test
+    public void testShouldUpdateTicketStatus() {
+        TicketSales result = ticketSalesPersistenceAdapter.updateTicketStatus(UUID.randomUUID(), ticketSales);
+
+        assertNull(result);
     }
 
     private void initTicketSalesEntity() {
