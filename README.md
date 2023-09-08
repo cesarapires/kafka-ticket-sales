@@ -1,3 +1,5 @@
+[![Unit Tests](https://github.com/cesarapires/kafka-ticket-sales/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/cesarapires/kafka-ticket-sales/actions/workflows/unit-tests.yml)
+
 # kafka-ticket-sales
 
 This repository is a learning resource for studying Kafka with Java in the context of a ticket sales system. It provides examples and code to help you understand how Kafka works and how it can be used in real-world applications.
