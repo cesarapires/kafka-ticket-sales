@@ -6,11 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Builder
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class TicketSalesCreatedEvent implements TicketSalesEvent {
 
     private UUID id;
