@@ -14,8 +14,4 @@ public enum Status {
     Status(String description) {
         this.description = description;
     }
-
-    public String getDescription() {
-        return description;
-    }
 }
